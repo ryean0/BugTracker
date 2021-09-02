@@ -1,0 +1,36 @@
+{
+  "name": "bugtracker",
+  "version": "1.0.0",
+  "description": "bug tracking project built with MERN stack and Heroku",
+  "main": "server.js",
+  "dependencies": {
+    "axios": "^0.21.1",
+    "bcryptjs": "^2.4.3",
+    "concurrently": "^6.2.1",
+    "config": "^3.3.6",
+    "express": "^4.17.1",
+    "express-validator": "^6.12.1",
+    "gravatar": "^1.8.2",
+    "jsonwebtoken": "^8.5.1",
+    "moment": "^2.29.1",
+    "mongoose": "^6.0.2",
+    "nodemon": "^2.0.12",
+    "react-moment": "^1.1.1",
+    "react-redux": "^7.2.4",
+    "react-router-dom": "^5.2.1",
+    "redux": "^4.1.1",
+    "redux-devtools-extension": "^2.13.9",
+    "redux-thunk": "^2.3.0",
+    "request": "^2.88.2"
+  },
+  "devDependencies": {},
+  "scripts": {
+    "start": "node server.js",
+    "server": "nodemon server",
+    "client": "npm start --prefix client",
+    "dev": "concurrently \"npm run server\" \"npm run client\"",
+    "heroku-postbuild": "NPM_CONFIG_PRODUCTION=false npm install --prefix client && npm run build --prefix client"
+  },
+  "author": "Ryan Phua",
+  "license": "MIT"
+}
