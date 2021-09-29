@@ -1,10 +1,11 @@
 import React from 'react';
-import { useSelector } from 'react-redux';
+import PropTypes from 'prop-types';
 import Alert from '@material-ui/lab/Alert';
+import { connect } from 'react-redux';
 
 
-const AllAlerts = () => {
-    const alerts = useSelector((state) => state.alert);
+const AllAlerts = ({ alerts }) => {
+    
     return (
         <div>
             {alerts.map(alert => (
@@ -18,4 +19,13 @@ const AllAlerts = () => {
         </div>
     )
 }
-export default AllAlerts
+
+Alert.propTypes = {
+    alerts: PropTypes.array.isRequired,
+}
+
+const mapStateToProps = (state) => ({
+    alerts: state.alert
+})
+
+export default connect(mapStateToProps)(AllAlerts)

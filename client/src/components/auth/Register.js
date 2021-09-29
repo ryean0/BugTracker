@@ -1,10 +1,8 @@
 import React, { Fragment, useState } from 'react'
-import PropTypes from 'prop-types';
 import { Paper, Container, Grid, Button, Card, CardActions, CardContent, TextField, Link} from '@material-ui/core/';
 import Typography from '@material-ui/core/Typography';
 import Background from '../../img/background.jpg';
 import { makeStyles } from '@material-ui/core/styles';
-import store from '../../store';
 import { useDispatch, useSelector } from 'react-redux';
 import { setAlert } from '../../action-creators/alert';
 import { register } from '../../action-creators/auth';
@@ -46,9 +44,9 @@ const useStyles = makeStyles({
     }
   });
 
-const Register = props => {
+const Register = () => {
+    const isAuth = useSelector((state) => state.auth.isAuth);
     const dispatch = useDispatch();
-    const isAuth = useSelector((state) => state.auth.isAuth)
     const [formData, setFormData] = useState({
         name: '',
         email: '',
@@ -62,9 +60,9 @@ const Register = props => {
     const handleSubmit = e => {
         e.preventDefault();
         if (password !== password2) {
-            setAlert("Passwords do not match", 'error');
+            dispatch(setAlert("Passwords do not match", 'error'));
         } else {
-            register({ name, email, password })
+            dispatch(register({ name, email, password }));
         }
     }
     const classes = useStyles();
@@ -88,7 +86,8 @@ const Register = props => {
                                 value={name} 
                                 name="name"
                                 onChange={e => onChange(e)}
-                            />
+                                required
+                        />
                         <TextField 
                             className={classes.formField} 
                             variant="filled" 
@@ -96,6 +95,7 @@ const Register = props => {
                             name="email" 
                             value={email}
                             onChange={e => onChange(e)}
+                            required
                         />
                         <TextField 
                             className={classes.formField} 
@@ -104,6 +104,7 @@ const Register = props => {
                             name="password" 
                             value={password}
                             onChange={e => onChange(e)}
+                            required
                         />
                         <TextField 
                             className={classes.formField} 
@@ -112,6 +113,7 @@ const Register = props => {
                             name="password2" 
                             value={password2}
                             onChange={e => onChange(e)}
+                            required
                         />
                         <Button
                             type="submit"
@@ -126,6 +128,5 @@ const Register = props => {
         </Fragment>
     )
 }
-
 
 export default Register;

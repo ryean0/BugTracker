@@ -5,7 +5,6 @@ import Typography from '@material-ui/core/Typography';
 import Background from '../../img/background.jpg';
 import { makeStyles } from '@material-ui/core/styles';
 import { setAlert } from '../../action-creators/alert';
-import { useDispatch } from 'react-redux';
 import store from '../../store';
 
 
@@ -65,7 +64,6 @@ const Login = (props) => {
     const onChange = (e) => {
         setFormData({ ...formData, [e.target.name]: e.target.value })
     }
-    //const dispatch = useDispatch();
     const classes = useStyles();
     return (
         <Fragment>
