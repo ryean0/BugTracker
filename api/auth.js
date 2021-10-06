@@ -16,7 +16,7 @@ const bcrypt = require('bcryptjs');
 // Everytime user accesses a route with auth middleware, token will be grabbed from req.header, and user id will be added to req.user
 router.get('/', auth, async (req, res) => {
     try {
-        // search for user in mongodb 
+        // search for user in mongodb & return in res
         const user = await User.findById(req.user.id).select('-password');
         res.json(user);
     } catch (err) {
@@ -26,7 +26,7 @@ router.get('/', auth, async (req, res) => {
 });
 
 /*  @route POST api/auth
-    @descr Authenticate registered user & get token
+    @descr Login Route: Authenticate registered user & get token
     @access Public ()
 */
 router.post('/', [

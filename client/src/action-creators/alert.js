@@ -17,5 +17,4 @@ export const setAlert = (msg, alertType, timeout=5000) => {
             payload: id
         }), timeout)
     }
-    
 }

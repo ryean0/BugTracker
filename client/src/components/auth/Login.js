@@ -64,6 +64,10 @@ const Login = (props) => {
     const onChange = (e) => {
         setFormData({ ...formData, [e.target.name]: e.target.value })
     }
+    // TODO: onSubmit Handler for login page
+    const onSubmit = (e) => {
+        alert("Login Form Submitted!")
+    }
     const classes = useStyles();
     return (
         <Fragment>
@@ -74,7 +78,7 @@ const Login = (props) => {
                         variant="subtitle1" 
                         align="center"
                     >Sign In</Typography>
-                    <form onSubmit={e => alert('Hello')}>
+                    <form onSubmit={e => onSubmit(e)}>
                         <TextField 
                             className={classes.formField} 
                             variant="filled" 
