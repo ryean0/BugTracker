@@ -35,6 +35,7 @@ export const register = ({ name, email, password }) => async (dispatch) => {
     }
     const body = JSON.stringify({ name, email, password });
     try {
+        // user is registered in backend api
         const res = await axios.post("/api/users", body, config);
         // payload is the token sent back; payload: { token: ... }        
         dispatch({

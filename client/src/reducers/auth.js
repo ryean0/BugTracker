@@ -9,13 +9,14 @@ const initialState = {
 }
 
 export default function(state=initialState, action) {
-    switch(action.type) {
+    const {type, payload} = action;
+    switch(type) {
         case REGISTER_SUCCESS:
             // log user in, and save token in localStorage
-            localStorage.setItem('token', action.payload.token);
+            localStorage.setItem('token', payload.token);
             return {
                 ...state,
-                ...action.payload,
+                ...payload,
                 isAuth: true,
                 loading: false
             }
